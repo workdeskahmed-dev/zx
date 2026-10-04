@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>باقة صحتي</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--o:#FF6A13;--k:#14110F}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#fff;cursor:none}
+#st{position:absolute;left:50%;top:50%;width:1080px;height:1920px;overflow:hidden;background:#fff;transform-origin:0 0;font-family:Cairo,Tahoma,sans-serif;color:var(--k)}
+#w{position:absolute;left:0;top:0;transform-origin:0 0}
+.o{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;text-align:center;line-height:1.1}
+.e{opacity:0}
+.img{overflow:hidden;background:linear-gradient(135deg,#ffe5d3,#ff8a3d)}
+.img img{width:100%;height:100%;object-fit:cover;display:block}
+svg{overflow:visible;display:block}
+.dp{fill:none;stroke:var(--o);stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1}
+.pill{background:var(--o);color:#fff;border-radius:60px;padding:6px 48px}
+#ov{position:absolute;left:540px;top:960px;width:200px;height:200px;margin:-100px;border-radius:50%;background:var(--o);transform:scale(0)}
+@keyframes wg{0%,100%{transform:rotate(0)}25%{transform:rotate(-16deg)}75%{transform:rotate(16deg)}}
+.wig{animation:wg .35s 3}
+</style></head><body>
+<div id="st"><div id="w"></div><div id="ov"></div></div>
+<script>
+/* Assets next to this file: logo.png, health1.png ... health5.png */
+const W=document.getElementById('w'),ST=document.getElementById('st'),OV=document.getElementById('ov');
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const EA={o:x=>1-Math.pow(1-x,4),x:x=>x>=1?1:1-Math.pow(2,-10*x),io:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,w:x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2,b:x=>1+2.9*Math.pow(x-1,3)+1.9*Math.pow(x-1,2)};
+const els=[];
+function E(h,x,y,s,d,a,o={}){const g=document.createElement('div');g.className='o';g.style.left=x+'px';g.style.top=y+'px';
+const i=document.createElement('div');i.className='e'+(o.cls?' '+o.cls:'');i.innerHTML=h;if(o.css)i.style.cssText+=o.css;g.appendChild(i);W.appendChild(g);
+els.push({i,s,d,a,o:o.out,ox:o.ox,oy:o.oy,x,y,ps:[...i.querySelectorAll('.dp')],im:i.querySelector('img')});return i}
+const T=(t,sz,w=900,st='')=>`<div style="font-size:${sz}px;font-weight:${w};${st}">${t}</div>`;
+const OR='color:var(--o);',L=n=>`<span dir="ltr">${n}</span>`;
+const SV=(w,vb,ps,sw=7,tf='')=>{const[a,b]=vb.split(' ').slice(2).map(Number);return `<svg width="${w}" height="${w*b/a}" viewBox="${vb}" style="${tf}">${ps.map(d=>`<path class="dp" pathLength="1" stroke-width="${sw}" d="${d}"/>`).join('')}</svg>`};
+const UL=['M6 26C70 10 160 30 250 18S372 22 396 12'],UL2=[...UL,'M30 40C120 28 230 44 330 33'];
+const CIR=['M210 14C330 4 392 70 372 150C350 240 120 296 40 200C-10 130 40 30 190 22C260 18 330 40 352 70'];
+const ARR=['M10 20C40 130 110 150 170 120','M140 100L172 120L146 148'];
+const STR=['M0 28C100 10 260 30 410 8'],CHK=['M6 38L28 60L74 8'];
+const ul=(w,p=UL)=>SV(w,'0 0 400 44',p);
+const logo=w=>`<img src="logo.png" style="width:${w}px;display:block" onerror="this.remove()">`;
+const ringH=s=>`<div style="width:${s}px;height:${s}px;border:7px solid var(--o);border-radius:50%"></div>`;
+const K=[];
+
+/* ===== S1 HOOK 0–3 ===== */
+E(`<div style="width:28px;height:28px;border-radius:50%;background:var(--o)"></div>`,540,960,.1,.3,'pop',{out:.95});
+E(SV(1080,'0 0 1080 20',['M0 10L1080 10']),540,960,.35,.45,'d',{out:.95});
+E(T('تهتم',140,600),540,790,.9,.45,'up');
+E(T('بصحتك؟',250),540,1000,1.05,.5,'up');
+E(ul(640),540,1160,1.5,.5,'d');
+E(SV(170,'0 0 200 160',ARR,7,'transform:scale(-1,-1)'),850,1270,2.0,.4,'d');
+K.push([0,540,960,.88],[.9,540,960,1,'o'],[1.2,540,980,1,'io'],[2.3,540,1040,1.4,'io'],[2.75,540,960,.85,'io'],[3.3,1600,900,.8,'w']);
+
+/* ===== S2 PACKAGE 3–6 ===== */
+const X2=1600;
+E(T('باقة',190,600),X2,800,3.3,.4,'up');
+E(T('صحتي',400),X2,1030,3.45,.5,'up');
+E(ul(700,UL2).replace('stroke-width="7"','stroke-width="8"'),X2,1220,4.25,.5,'d');
+E(T(L('5'),420),X2-240,1480,4.85,.4,'pop');
+E(T('فحوصات',150,700),X2+160,1500,5.0,.4,'up');
+E(SV(440,'0 0 400 300',CIR,8),X2-240,1480,5.15,.5,'d');
+E(T('في باقة واحدة',100,600,'color:#6b6560'),X2,1770,5.45,.4,'up');
+K.push([3.9,X2,1000,1,'o'],[4.5,X2,1040,1.25,'io'],[4.9,X2,1350,.8,'io'],[5.7,X2,1500,.95,'io']);
+
+/* ===== S3 FIVE TESTS 6–12.5 ===== */
+const TA=[6.3,7.5,8.7,9.9,11.1];
+const ND=[['health1',170,'أولاً','صورة الدم',190,'a','r'],['health2',-170,'فيتامين','D3',330,'u','r'],['health3',170,'فيتامين','B12',330,'c','l'],['health4',-170,'مخزون','الحديد',230,'u','l'],['health5',170,'وأيضاً','الزنك',260,'k','r']];
+ND.forEach((n,i)=>{const X=3200+i*1200,ta=TA[i],[im,dx,sm,bg,sz,an,dir]=n,w=Math.max(380,bg.length*sz*.5);
+E(`<img src="${im}.png" onerror="this.remove()">`,X+dx,760,ta-.45,.8,dir,{css:'width:660px;height:860px',cls:'img'});
+E(T(sm,80,500,'color:#6b6560'),X,1300,ta-.1,.4,'up');
+E(T(bg,sz),X,1470,ta+.05,.5,'up');
+if(an=='u')E(ul(w),X,1470+sz*.55,ta+.4,.4,'d');
+if(an=='a')E(SV(170,'0 0 200 160',ARR,7,'transform:rotate(-40deg)'),X-300,950,ta+.2,.45,'d');
+if(an=='c')E(SV(560,'0 0 400 300',CIR,7),X,1480,ta+.35,.5,'d');
+if(an=='k')E(SV(110,'0 0 80 70',CHK,10),X+330,1310,ta+.4,.4,'d');
+K.push([ta,X+dx*.3,1000,.9,'w'],[ta+.62,X,1430,1.45,'io']);
+if(i==4){const names=[['فيتامين D3',-200,150],['فيتامين B12',230,330],['مخزون الحديد',-250,1750],['الزنك',300,1830],['صورة الدم',0,1960]];
+names.forEach((q,j)=>E(`<span style="color:var(--o)">✓</span> `+q[0],X+q[1],q[2],12+j*.08,.3,'pop',{css:'font-size:64px;font-weight:700;background:#fff;border:3px solid var(--o);border-radius:24px;padding:4px 30px'}));
+K.push([12.1,X,1050,.72,'io'],[12.45,X,1050,.74,'io'],[12.95,9600,900,.9,'w'])}});
+
+/* ===== S4 OFFER 12.5–16.5 ===== */
+const X4=9600;
+E(T(L('55,000'),200,700,'color:#cfc9c4'),X4,640,12.8,.4,'up');
+E(SV(560,'0 0 400 40',STR,6),X4,650,13.2,.25,'d');
+E(ringH(600),X4,1010,13.65,.5,'ring');
+E(T(L('35,000'),310),X4,1010,13.65,.35,'pop');
+E(T('د.ع فقط',125,700),X4,1320,13.95,.4,'up');
+E(T('عرض باقة صحتي',56,700),X4,430,14.15,.4,'pop',{cls:'pill'});
+E(ul(820,UL2),X4,1190,14.9,.6,'d');
+K.push([13.2,X4,850,1,'io'],[13.7,X4,1060,1.55,'x'],[14.25,X4,1000,.95,'io'],[15.2,X4,1100,1.2,'io'],[16.2,X4,1080,1.25,'io'],[16.7,11200,960,.9,'w']);
+
+/* ===== S5 RECAP 16.5–18.5 ===== */
+const X5=11200,cx=X5,cy=960;
+E(SV(1080,'0 0 1080 1080',['M340 140C700 150 800 250 760 340C700 450 340 420 320 540C300 650 700 650 740 740C780 840 400 840 390 940'],3),X5,920,17.0,.7,'d',{out:17.6});
+[['فيتامين D3',-200,520],['فيتامين B12',220,720],['مخزون الحديد',-220,920],['الزنك',200,1120],['صورة الدم',-150,1320]].forEach((q,j)=>
+E(T(q[0],90,700,'background:#fff;padding:0 24px'),X5+q[1],q[2],16.75+j*.1,.4,j%2?'r':'l',{out:17.6,ox:cx,oy:cy}));
+E(T(`باقة <span style="color:var(--o)">صحتي</span>`,200),X5,960,17.75,.4,'pop');
+K.push([17.7,X5,960,1,'io'],[18.3,X5-190,960,4,'io'],[18.4,X5-190,960,4,'io']);
+const OVK=[[18.1,0],[18.35,1],[18.45,1],[18.9,0]];
+
+/* ===== S6 BRAND 18.5–20.5 ===== */
+const X6=12800;
+K.push([18.401,X6,780,3.2,'o'],[19.1,X6,900,1,'o'],[20.2,X6,1020,1.1,'io'],[20.8,14400,960,.9,'w']);
+E(logo(560),X6,780,18.7,.6,'pop');
+E(T('مختبر جينوم للتحليلات المرضية',68,700),X6,1090,19.2,.4,'up');
+E(`<svg width="54" height="72" viewBox="0 0 60 80" fill="#FF6A13" fill-rule="evenodd"><path d="M30 0C13 0 0 13 0 30c0 22 30 50 30 50s30-28 30-50C60 13 47 0 30 0zM30 42a12 12 0 100-24 12 12 0 000 24z"/></svg>`,X6,1230,19.5,.4,'pop');
+E(T('ميسان – العمارة',70,800),X6,1340,19.6,.35,'up');
+E(T('قطاع 28 – شارع السوق',60,500),X6,1425,19.85,.35,'up');
+E(T('مقابل صيدلية نيبور',60,500),X6,1505,20.1,.35,'up');
+
+/* ===== S7 CTA 20.5–23 ===== */
+const X7=14400;
+E(T('احجز باقتك',165),X7,560,20.6,.4,'up');
+E(T('الآن',190,900,OR),X7,760,20.75,.4,'up');
+E(ul(380,UL2),X7,880,21.0,.5,'d');
+E(T(`${L('35,000')} د.ع فقط`,105,700),X7,1010,21.1,.4,'up');
+const ph=E(`<div style="width:130px;height:130px;border-radius:50%;background:var(--o);display:flex;align-items:center;justify-content:center"><svg width="70" height="70" viewBox="0 0 24 24" fill="#fff"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>`,X7,1170,21.4,.4,'pop');
+E(T(L('0775177291'),155,900,'letter-spacing:2px'),X7,1340,21.55,.4,'up');
+E(SV(150,'0 0 200 160',ARR,7,'transform:scale(-1,1) rotate(20deg)'),X7+400,1210,21.8,.4,'d');
+E(logo(250),X7,1630,21.9,.4,'f');
+E(T('مختبر جينوم للتحليلات المرضية',50,600),X7,1770,22.0,.3,'f');
+E(ringH(700),X7,1340,22.2,.8,'ring');
+K.push([21.5,X7,980,1,'io'],[22.2,X7,1020,1.06,'io'],[23,X7,1025,1.07,'io']);
+
+/* ===== ENGINE ===== */
+function tick(t){
+for(const e of els){const p=cl((t-e.s)/e.d),q=EA.o(p),st=e.i.style;let op=p>0?1:0,tx=0,ty=0,sc=1,cp='none';
+switch(e.a){
+case'up':ty=(1-q)*90;op=cl(p*3);cp=p<1?`inset(-10% -5% ${(1-q)*100}% -5%)`:'none';break;
+case'pop':sc=.4+.6*EA.b(p);op=cl(p*5);break;
+case'l':tx=-(1-EA.x(p))*900;break;
+case'r':tx=(1-EA.x(p))*900;break;
+case'f':op=p;break;
+case'ring':sc=.2+2.8*q;op=1-p;if(p<=0)op=0;break;
+case'd':e.ps.forEach((s,k)=>{const u=cl(p*e.ps.length-k);s.style.strokeDashoffset=1-EA.o(u);s.style.opacity=u>0?1:0});break}
+if(e.im)e.im.style.transform=`scale(${1.3-.3*EA.o(cl((t-e.s)/2))})`;
+if(e.o!=null&&t>e.o){const u=cl((t-e.o)/.35);op*=1-u;if(e.ox!=null){const m=EA.io(u);tx+=(e.ox-e.x)*m;ty+=(e.oy-e.y)*m;sc*=1-.8*m}}
+st.opacity=op;st.transform=`translate3d(${tx}px,${ty}px,0) scale(${sc})`;st.clipPath=cp}
+let i=0;while(i<K.length-2&&t>=K[i+1][0])i++;const a=K[i],b=K[i+1],e=EA[b[4]||'io'](cl((t-a[0])/(b[0]-a[0])));
+const dr=t<22.2?3:0;let x=a[1]+(b[1]-a[1])*e+Math.sin(t*1.3)*dr,y=a[2]+(b[2]-a[2])*e+Math.cos(t*1.7)*dr,z=a[3]*Math.pow(b[3]/a[3],e);
+W.style.transform=`translate3d(${540-x*z}px,${960-y*z}px,0) scale(${z})`;
+let j=0;while(j<OVK.length-2&&t>=OVK[j+1][0])j++;const o=OVK[j],n=OVK[j+1],v=o[1]+(n[1]-o[1])*EA.io(cl((t-o[0])/(n[0]-o[0])));
+OV.style.transform=`scale(${v*14})`;
+if(t>21.5)ph.classList.add('wig')}
+function fit(){const s=Math.min(innerWidth/1080,innerHeight/1920);ST.style.transform=`translate(${-540*s}px,${-960*s}px) scale(${s})`}
+addEventListener('resize',fit);fit();tick(0);
+let t0,raf;
+function loop(n){const t=Math.min(23,(n-t0)/1000);tick(t);if(t<23)raf=requestAnimationFrame(loop)}
+function start(){cancelAnimationFrame(raf);ph.classList.remove('wig');t0=performance.now();raf=requestAnimationFrame(loop)}
+document.fonts.ready.then(()=>setTimeout(start,400));
+addEventListener('keydown',e=>{if(e.key=='r'||e.key=='R')start()});
+</script></body></html>
